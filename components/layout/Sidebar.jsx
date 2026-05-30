@@ -25,52 +25,88 @@ export default function Sidebar() {
   return (
     <aside className={cn(
       'flex flex-col h-screen sticky top-0 transition-all duration-300 z-40',
-      'border-r border-[#0041CC]',
+      'bg-white border-r border-gray-100 shadow-sm',
       collapsed ? 'w-16' : 'w-64'
-    )} style={{ background: '#0057FF' }}>
+    )}>
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-[#0041CC]">
-        <div className="w-9 h-9 bg-[#F5C400] rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-          <span className="font-black text-[#0057FF] text-base">Z</span>
+      <div className={cn(
+        'flex items-center gap-3 border-b border-gray-100',
+        collapsed ? 'px-3 py-5 justify-center' : 'px-5 py-5'
+      )}>
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md" style={{ background: '#0057FF' }}>
+          <span className="font-black text-white text-base">Z</span>
         </div>
         {!collapsed && (
           <div>
-            <p className="font-black text-white text-lg leading-none tracking-tight">ZigPulse</p>
-            <p className="text-blue-200 text-xs mt-0.5">ComfortDelGro SG</p>
+            <p className="font-black text-gray-900 text-lg leading-none tracking-tight">ZigPulse</p>
+            <p className="text-gray-400 text-xs mt-0.5 font-medium">ComfortDelGro SG</p>
           </div>
         )}
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 py-4 overflow-y-auto">
+      <nav className="flex-1 py-3 overflow-y-auto px-2">
+        {!collapsed && (
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-1">Navigation</p>
+        )}
         {NAV.map(({ href, label, icon: Icon }) => {
           const active = pathname === href
           return (
             <Link
               key={href}
               href={href}
-              className={cn(
-                'flex items-center gap-3 mx-2 my-0.5 px-3 py-3 rounded-xl transition-all duration-200 min-h-[48px]',
-                'text-blue-100 hover:bg-[#0041CC] hover:text-white',
-                active && 'bg-[#F5C400] text-[#0057FF] font-semibold hover:bg-[#D4A900] hover:text-[#0057FF]'
-              )}
               title={collapsed ? label : undefined}
+              className={cn(
+                'flex items-center gap-3 my-0.5 px-3 py-2.5 rounded-xl transition-all duration-200 min-h-[48px] group',
+                active
+                  ? 'bg-[#0057FF] text-white shadow-md shadow-blue-200'
+                  : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900',
+                collapsed && 'justify-center'
+              )}
             >
-              <Icon size={20} className="flex-shrink-0" />
-              {!collapsed && <span className="text-sm font-medium">{label}</span>}
+              <Icon
+                size={20}
+                className={cn(
+                  'flex-shrink-0 transition-colors',
+                  active ? 'text-white' : 'text-gray-400 group-hover:text-[#0057FF]'
+                )}
+              />
+              {!collapsed && (
+                <span className={cn('text-sm font-medium', active ? 'text-white' : 'text-gray-700')}>
+                  {label}
+                </span>
+              )}
+              {active && !collapsed && (
+                <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#F5C400]" />
+              )}
             </Link>
           )
         })}
       </nav>
 
-      {/* Collapse toggle */}
-      <button
-        onClick={() => setCollapsed(!collapsed)}
-        className="flex items-center justify-center h-12 border-t border-[#0041CC] text-blue-200 hover:text-white hover:bg-[#0041CC] transition-colors"
-        aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-      >
-        {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
-      </button>
+      {/* Footer */}
+      <div className="border-t border-gray-100 p-3">
+        {!collapsed && (
+          <div className="flex items-center gap-2 px-2 py-2 mb-2 rounded-xl bg-gray-50">
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#F5C400' }}>
+              <span className="text-xs font-black text-[#0057FF]">CDG</span>
+            </div>
+            <div className="min-w-0">
+              <p className="text-gray-800 text-xs font-semibold truncate">Operations Team</p>
+              <p className="text-gray-400 text-xs truncate">Singapore</p>
+            </div>
+          </div>
+        )}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className={cn(
+            'flex items-center justify-center w-full py-2 rounded-xl text-gray-400 hover:text-[#0057FF] hover:bg-blue-50 transition-colors min-h-[40px]',
+          )}
+          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+        >
+          {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+        </button>
+      </div>
     </aside>
   )
 }
