@@ -8,11 +8,11 @@ export function ProfitLineChart({ data }) {
   return (
     <ResponsiveContainer width="100%" height={240} aria-label="Daily profit projection chart">
       <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#1F2937" />
-        <XAxis dataKey="date" stroke="#4B5563" tick={{ fill: '#9CA3AF', fontSize: 11 }} tickFormatter={v => v.slice(5)} />
-        <YAxis stroke="#4B5563" tick={{ fill: '#9CA3AF', fontSize: 11 }} tickFormatter={v => `$${(v / 1000).toFixed(0)}k`} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
+        <XAxis dataKey="date" stroke="#CBD5E1" tick={{ fill: '#94A3B8', fontSize: 11 }} tickFormatter={v => v.slice(5)} />
+        <YAxis stroke="#CBD5E1" tick={{ fill: '#94A3B8', fontSize: 11 }} tickFormatter={v => `$${(v / 1000).toFixed(0)}k`} />
         <Tooltip
-          contentStyle={{ background: '#111827', border: '1px solid #1F2937', borderRadius: 12, fontSize: 14 }}
+          contentStyle={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: 12, fontSize: 14, boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
           formatter={v => [`$${v.toLocaleString()}`, 'Revenue']}
         />
         <Line type="monotone" dataKey="revenue" stroke="#0057FF" strokeWidth={2.5} dot={false} animationDuration={1000} />
@@ -35,10 +35,10 @@ export function RevenueDonut({ normal, event, rain }) {
           {d.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
         </Pie>
         <Tooltip
-          contentStyle={{ background: '#111827', border: '1px solid #1F2937', borderRadius: 12, fontSize: 14 }}
+          contentStyle={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: 12, fontSize: 14, boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
           formatter={v => [`$${v.toLocaleString()}`, '']}
         />
-        <Legend wrapperStyle={{ color: '#9CA3AF', fontSize: 13 }} />
+        <Legend wrapperStyle={{ color: '#64748B', fontSize: 13 }} />
       </PieChart>
     </ResponsiveContainer>
   )

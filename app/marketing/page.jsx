@@ -28,8 +28,8 @@ function MarketingContent() {
   return (
     <div className="p-6 space-y-6">
       {/* Event selector */}
-      <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-        <h2 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h2 className="text-slate-900 font-bold text-lg mb-4 flex items-center gap-2">
           <Sparkles size={18} className="text-[#F5C400]" /> Select Event
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -39,13 +39,13 @@ function MarketingContent() {
               onClick={() => setSelectedEvent(e)}
               className={`text-left p-4 rounded-xl border transition-all duration-200 min-h-[88px] ${
                 selectedEvent?.name === e.name
-                  ? 'border-[#0057FF] bg-[#0057FF]/10'
-                  : 'border-[#1F2937] bg-[#0A0F1E] hover:border-[#374151]'
+                  ? 'border-[#0057FF] bg-blue-50'
+                  : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white'
               }`}
             >
-              <p className="text-white font-semibold text-sm leading-tight">{e.name}</p>
-              <p className="text-[#9CA3AF] text-xs mt-1">{e.zone} · {e.daysUntil}d away</p>
-              <p className="text-green-400 text-xs mt-1.5 font-semibold">+{e.demandSurge}% demand surge</p>
+              <p className="text-slate-900 font-semibold text-sm leading-tight">{e.name}</p>
+              <p className="text-slate-400 text-xs mt-1">{e.zone} · {e.daysUntil}d away</p>
+              <p className="text-green-600 text-xs mt-1.5 font-semibold">+{e.demandSurge}% demand surge</p>
             </button>
           ))}
         </div>
@@ -106,9 +106,9 @@ function MarketingContent() {
 
       {!selectedEvent && (
         <div className="text-center py-24">
-          <Sparkles size={48} className="mx-auto mb-4 text-[#1F2937]" />
-          <p className="text-[#4B5563] text-lg">Select an event above to generate AI marketing campaigns</p>
-          <p className="text-[#374151] text-sm mt-2">Powered by Claude AI — Instagram, TikTok, X, and Facebook copy in seconds</p>
+          <Sparkles size={48} className="mx-auto mb-4 text-slate-200" />
+          <p className="text-slate-500 text-lg">Select an event above to generate AI marketing campaigns</p>
+          <p className="text-slate-400 text-sm mt-2">Powered by Claude AI — Instagram, TikTok, X, and Facebook copy in seconds</p>
         </div>
       )}
     </div>
@@ -119,7 +119,7 @@ export default function MarketingPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <TopBar title="Marketing Studio" />
-      <Suspense fallback={<div className="p-6 text-[#9CA3AF]">Loading...</div>}>
+      <Suspense fallback={<div className="p-6 text-slate-400">Loading...</div>}>
         <MarketingContent />
       </Suspense>
     </div>

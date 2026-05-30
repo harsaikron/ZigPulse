@@ -10,8 +10,8 @@ function RangeSlider({ label, value, min, max, step, onChange, format }) {
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
-        <label className="text-[#9CA3AF] text-sm font-medium">{label}</label>
-        <span className="text-white font-bold text-base">{format ? format(value) : value}</span>
+        <label className="text-slate-500 text-sm font-medium">{label}</label>
+        <span className="text-slate-900 font-bold text-base">{format ? format(value) : value}</span>
       </div>
       <input
         type="range" min={min} max={max} step={step} value={value}
@@ -19,7 +19,7 @@ function RangeSlider({ label, value, min, max, step, onChange, format }) {
         className="w-full accent-[#0057FF] h-2"
         aria-label={label}
       />
-      <div className="flex justify-between text-xs text-[#4B5563]">
+      <div className="flex justify-between text-xs text-slate-400">
         <span>{format ? format(min) : min}</span>
         <span>{format ? format(max) : max}</span>
       </div>
@@ -30,10 +30,10 @@ function RangeSlider({ label, value, min, max, step, onChange, format }) {
 function Toggle({ label, value, onChange }) {
   return (
     <div className="flex items-center justify-between min-h-[48px]">
-      <span className="text-[#9CA3AF] text-sm font-medium">{label}</span>
+      <span className="text-slate-500 text-sm font-medium">{label}</span>
       <button
         onClick={() => onChange(!value)}
-        className={`relative w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#F5C400] ${value ? 'bg-[#0057FF]' : 'bg-[#374151]'}`}
+        className={`relative w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#F5C400] ${value ? 'bg-[#0057FF]' : 'bg-slate-200'}`}
         role="switch"
         aria-checked={value}
         aria-label={label}
@@ -81,8 +81,8 @@ export default function ProfitPage() {
       <div className="p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Controls panel */}
-          <div className="lg:col-span-1 bg-[#111827] border border-[#1F2937] rounded-xl p-6 space-y-5">
-            <h2 className="text-white font-bold text-lg">Scenario Controls</h2>
+          <div className="lg:col-span-1 bg-white border border-slate-200 rounded-xl p-6 space-y-5 shadow-sm">
+            <h2 className="text-slate-900 font-bold text-lg">Scenario Controls</h2>
 
             <RangeSlider label="Date Range (days)" value={days} min={7} max={60} step={7} onChange={setDays} />
             <RangeSlider label="Active Fleet" value={fleet} min={1000} max={20000} step={500} onChange={setFleet} format={formatNumber} />
@@ -90,7 +90,7 @@ export default function ProfitPage() {
             <RangeSlider label="Avg Fare (SGD)" value={fare} min={8} max={25} step={1} onChange={setFare} format={v => `$${v}`} />
             <RangeSlider label="Fuel Cost Adj %" value={fuelAdj} min={-20} max={50} step={5} onChange={setFuelAdj} format={v => `${v > 0 ? '+' : ''}${v}%`} />
 
-            <div className="space-y-1 pt-3 border-t border-[#1F2937]">
+            <div className="space-y-1 pt-3 border-t border-slate-100">
               <Toggle label="Event Multiplier" value={useEvents} onChange={setUseEvents} />
               <Toggle label="Weather Multiplier" value={useWeather} onChange={setUseWeather} />
               <Toggle label="El Niño Factor" value={useElNino} onChange={setUseElNino} />
@@ -101,43 +101,43 @@ export default function ProfitPage() {
           <div className="lg:col-span-2 space-y-5">
             {/* KPI cards */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-                <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-wide">Gross Revenue</p>
-                <p className="text-2xl font-black text-white mt-2">{formatSGD(totalRevenue)}</p>
-                <p className="text-[#9CA3AF] text-xs mt-1">{days}-day period</p>
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wide">Gross Revenue</p>
+                <p className="text-2xl font-black text-[#0057FF] mt-2">{formatSGD(totalRevenue)}</p>
+                <p className="text-slate-400 text-xs mt-1">{days}-day period</p>
               </div>
-              <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-                <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-wide">Net Profit</p>
-                <p className="text-2xl font-black text-green-400 mt-2">{formatSGD(netProfit)}</p>
-                <p className="text-[#9CA3AF] text-xs mt-1">~28% margin</p>
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wide">Net Profit</p>
+                <p className="text-2xl font-black text-green-600 mt-2">{formatSGD(netProfit)}</p>
+                <p className="text-slate-400 text-xs mt-1">~28% margin</p>
               </div>
-              <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-                <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-wide">Peak Day</p>
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wide">Peak Day</p>
                 <p className="text-2xl font-black text-[#F5C400] mt-2">{peakDay?.date?.slice(5) ?? '—'}</p>
-                <p className="text-[#9CA3AF] text-xs mt-1">{formatSGD(peakDay?.revenue ?? 0)}</p>
+                <p className="text-slate-400 text-xs mt-1">{formatSGD(peakDay?.revenue ?? 0)}</p>
               </div>
             </div>
 
             {/* Revenue chart */}
-            <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-              <h3 className="text-white font-bold mb-3">Daily Revenue Projection</h3>
+            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+              <h3 className="text-slate-900 font-bold mb-3">Daily Revenue Projection</h3>
               <ProfitLineChart data={profitData} />
             </div>
 
             {/* Split + events */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-                <h3 className="text-white font-bold mb-3">Revenue Split</h3>
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <h3 className="text-slate-900 font-bold mb-3">Revenue Split</h3>
                 <RevenueDonut normal={normalRevenue} event={eventRevenue} rain={rainRevenue} />
               </div>
-              <div className="bg-[#111827] border border-[#1F2937] rounded-xl p-5">
-                <h3 className="text-white font-bold mb-4">Top Event Opportunities</h3>
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <h3 className="text-slate-900 font-bold mb-4">Top Event Opportunities</h3>
                 <div className="space-y-3">
                   {events.slice(0, 5).map(e => (
                     <div key={e.name} className="flex items-center justify-between gap-2">
                       <div className="min-w-0">
-                        <p className="text-white text-sm font-medium truncate">{e.name}</p>
-                        <p className="text-[#9CA3AF] text-xs">{e.zone} · in {e.daysUntil}d</p>
+                        <p className="text-slate-900 text-sm font-medium truncate">{e.name}</p>
+                        <p className="text-slate-400 text-xs">{e.zone} · in {e.daysUntil}d</p>
                       </div>
                       <span className="text-[#F5C400] font-bold text-sm flex-shrink-0">+{e.demandSurge}%</span>
                     </div>
