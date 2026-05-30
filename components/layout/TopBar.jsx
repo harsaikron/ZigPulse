@@ -1,6 +1,7 @@
 'use client'
 import { Bell } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function TopBar({ title }) {
   const [time, setTime] = useState('')
@@ -13,7 +14,10 @@ export default function TopBar({ title }) {
 
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white sticky top-0 z-30 shadow-sm">
-      <h1 className="text-xl font-bold text-slate-900">{title}</h1>
+      <div className="flex items-center gap-4">
+        <Image src="/zig-logo-wordmark.svg" alt="Time to zig" width={130} height={38} priority className="hidden sm:block" />
+        <h1 className="text-xl font-bold text-slate-900">{title}</h1>
+      </div>
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-full border border-green-200">
           <span className="w-2 h-2 bg-green-500 rounded-full live-pulse" />

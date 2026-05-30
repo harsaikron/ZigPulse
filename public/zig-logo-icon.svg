@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="20" fill="#0057FF"/>
+  <text
+    x="8"
+    y="82"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="62"
+    font-weight="900"
+    font-style="italic"
+    fill="white"
+  >zig</text>
+  <!-- yellow dot sits above the "i" — "z" is ~28px wide at this size, "i" starts ~36px -->
+  <circle cx="62" cy="18" r="8" fill="#F5C400"/>
+</svg>

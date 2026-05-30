@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import Image from 'next/image'
 import {
   LayoutDashboard, TrendingUp, Calendar, Map,
   CloudSun, DollarSign, Megaphone, ChevronLeft, ChevronRight
@@ -33,15 +34,15 @@ export default function Sidebar() {
         'flex items-center gap-3 border-b border-gray-100',
         collapsed ? 'px-3 py-4 justify-center' : 'px-4 py-4'
       )}>
-        {/* Zig logo SVG */}
+        {/* Zig logo */}
         <div className="flex-shrink-0">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zig logo">
-            <rect width="36" height="36" rx="9" fill="#0057FF"/>
-            {/* Yellow dot above i */}
-            <ellipse cx="20.5" cy="9" rx="2.8" ry="2" fill="#F5C400"/>
-            {/* zig text */}
-            <text x="5" y="27" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="900" fill="white" fontStyle="italic">zig</text>
-          </svg>
+          <Image
+            src="/zig-logo-icon.svg"
+            alt="Zig logo"
+            width={36}
+            height={36}
+            priority
+          />
         </div>
         {!collapsed && (
           <div>

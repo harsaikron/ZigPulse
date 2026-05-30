@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80">
+  <!-- "Time to " in CDG blue bold italic -->
+  <text
+    x="4"
+    y="62"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="46"
+    font-weight="900"
+    font-style="italic"
+    fill="#0057FF"
+  >Time to</text>
+  <!-- blue rounded rect badge for "zig" -->
+  <rect x="214" y="4" width="122" height="72" rx="16" fill="#0057FF"/>
+  <!-- yellow dot above "i" inside badge -->
+  <circle cx="268" cy="20" r="7" fill="#F5C400"/>
+  <!-- "zig" white text inside badge -->
+  <text
+    x="220"
+    y="70"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="54"
+    font-weight="900"
+    font-style="italic"
+    fill="white"
+  >zig</text>
+</svg>
