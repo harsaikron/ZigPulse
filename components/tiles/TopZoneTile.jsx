@@ -15,16 +15,16 @@ export default function TopZoneTile() {
       front={
         <div className="flex-1 flex items-center justify-between mt-1 gap-2">
           <div className="min-w-0">
-            <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-widest flex items-center gap-1">
+            <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest flex items-center gap-1">
               <MapPin size={11} /> Top Zone
             </p>
-            <p className="text-3xl font-black text-white mt-2 leading-tight truncate">{top?.name ?? '—'}</p>
-            <p className="text-[#F5C400] font-bold text-sm mt-1">Score: {top?.score ?? 0}/100</p>
+            <p className="text-3xl font-black text-slate-900 mt-2 leading-tight truncate">{top?.name ?? '—'}</p>
+            <p className="text-[#0057FF] font-bold text-sm mt-1">Score: {top?.score ?? 0}/100</p>
           </div>
           <div className="text-right flex-shrink-0">
-            <p className="text-[#9CA3AF] text-xs">2nd</p>
-            <p className="text-xl font-bold text-white mt-1">{second?.name ?? '—'}</p>
-            <p className="text-[#9CA3AF] text-sm">{second?.score ?? 0}</p>
+            <p className="text-slate-400 text-xs">2nd</p>
+            <p className="text-xl font-bold text-slate-700 mt-1">{second?.name ?? '—'}</p>
+            <p className="text-slate-400 text-sm">{second?.score ?? 0}</p>
           </div>
         </div>
       }

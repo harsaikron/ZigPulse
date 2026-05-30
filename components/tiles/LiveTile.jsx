@@ -31,7 +31,7 @@ export default function LiveTile({
     <div
       className={cn(
         'relative rounded-xl overflow-hidden transition-shadow duration-500 h-full',
-        glowing && 'shadow-[0_0_24px_4px_rgba(0,87,255,0.35)]',
+        glowing && 'shadow-[0_0_20px_4px_rgba(0,87,255,0.18)]',
         className
       )}
       style={{ perspective: '1000px' }}
@@ -54,7 +54,7 @@ export default function LiveTile({
       >
         {/* Front */}
         <div
-          className="absolute inset-0 rounded-xl bg-[#111827] border border-[#1F2937] p-4 pt-8 flex flex-col"
+          className="absolute inset-0 rounded-xl bg-white border border-slate-200 p-4 pt-8 flex flex-col shadow-sm"
           style={{ backfaceVisibility: 'hidden' }}
         >
           {front}

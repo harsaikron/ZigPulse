@@ -16,13 +16,13 @@ export default function LTAAlertsTile() {
         <div className="flex-1 flex flex-col justify-between mt-1">
           <div className="flex items-center gap-2">
             {count > 0
-              ? <AlertTriangle size={18} className="text-red-400" />
-              : <CheckCircle size={18} className="text-green-400" />}
-            <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-widest">LTA Alerts</p>
+              ? <AlertTriangle size={18} className="text-red-500" />
+              : <CheckCircle size={18} className="text-green-500" />}
+            <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest">LTA Alerts</p>
           </div>
           <div>
-            <p className="text-5xl font-black text-white mt-2 tabular-nums">{count}</p>
-            <p className="text-[#9CA3AF] text-sm mt-1">
+            <p className={`text-5xl font-black mt-2 tabular-nums ${count > 0 ? 'text-red-500' : 'text-slate-900'}`}>{count}</p>
+            <p className="text-slate-400 text-sm mt-1">
               {count === 0 ? 'All systems normal' : `Active disruption${count > 1 ? 's' : ''}`}
             </p>
           </div>

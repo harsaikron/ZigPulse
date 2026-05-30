@@ -31,14 +31,21 @@ export default function Sidebar() {
       {/* Logo */}
       <div className={cn(
         'flex items-center gap-3 border-b border-gray-100',
-        collapsed ? 'px-3 py-5 justify-center' : 'px-5 py-5'
+        collapsed ? 'px-3 py-4 justify-center' : 'px-4 py-4'
       )}>
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md" style={{ background: '#0057FF' }}>
-          <span className="font-black text-white text-base">Z</span>
+        {/* Zig logo SVG */}
+        <div className="flex-shrink-0">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zig logo">
+            <rect width="36" height="36" rx="9" fill="#0057FF"/>
+            {/* Yellow dot above i */}
+            <ellipse cx="20.5" cy="9" rx="2.8" ry="2" fill="#F5C400"/>
+            {/* zig text */}
+            <text x="5" y="27" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="900" fill="white" fontStyle="italic">zig</text>
+          </svg>
         </div>
         {!collapsed && (
           <div>
-            <p className="font-black text-gray-900 text-lg leading-none tracking-tight">ZigPulse</p>
+            <p className="font-black text-gray-900 text-base leading-none tracking-tight">ZigPulse</p>
             <p className="text-gray-400 text-xs mt-0.5 font-medium">ComfortDelGro SG</p>
           </div>
         )}

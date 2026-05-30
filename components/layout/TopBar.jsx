@@ -12,15 +12,15 @@ export default function TopBar({ title }) {
   }, [])
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 border-b border-[#1F2937] bg-[#0A0F1E] sticky top-0 z-30">
-      <h1 className="text-xl font-bold text-white">{title}</h1>
+    <header className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white sticky top-0 z-30 shadow-sm">
+      <h1 className="text-xl font-bold text-slate-900">{title}</h1>
       <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 bg-green-400 rounded-full live-pulse" />
-          <span className="text-green-400 text-sm font-semibold">LIVE</span>
+        <div className="flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-full border border-green-200">
+          <span className="w-2 h-2 bg-green-500 rounded-full live-pulse" />
+          <span className="text-green-600 text-xs font-bold tracking-wide">LIVE</span>
         </div>
-        <span className="text-[#9CA3AF] text-sm font-mono hidden sm:block">{time}</span>
-        <button className="p-2 rounded-lg hover:bg-[#111827] text-[#9CA3AF] hover:text-white transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center" aria-label="Notifications">
+        <span className="text-slate-400 text-sm font-mono hidden sm:block">{time}</span>
+        <button className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Notifications">
           <Bell size={18} />
         </button>
       </div>

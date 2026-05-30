@@ -13,17 +13,17 @@ export default function NextEventTile() {
       front={
         <div className="flex-1 flex flex-col justify-between mt-1">
           <div>
-            <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-widest flex items-center gap-1">
+            <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest flex items-center gap-1">
               <Calendar size={11} /> Next Event
             </p>
-            <p className="text-white font-bold text-lg mt-2 leading-tight line-clamp-2">
+            <p className="text-slate-900 font-bold text-lg mt-2 leading-tight line-clamp-2">
               {next?.name ?? 'Loading...'}
             </p>
-            <p className="text-[#F5C400] text-sm mt-1 font-medium">{next?.zone}</p>
+            <p className="text-[#0057FF] text-sm mt-1 font-semibold">{next?.zone}</p>
           </div>
-          <div className="text-4xl font-black text-[#F5C400] mt-2">
+          <div className="text-4xl font-black text-[#0057FF] mt-2">
             {next?.daysUntil ?? '—'}
-            <span className="text-base font-normal text-[#9CA3AF] ml-1">days away</span>
+            <span className="text-base font-normal text-slate-400 ml-1">days away</span>
           </div>
         </div>
       }

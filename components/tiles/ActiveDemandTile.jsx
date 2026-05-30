@@ -17,20 +17,18 @@ export default function ActiveDemandTile() {
       front={
         <div className="flex-1 flex flex-col justify-between mt-1">
           <div>
-            <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-widest">Live Demand</p>
-            <p className="text-5xl font-black text-white mt-2 tabular-nums">{formatNumber(demand)}</p>
-            <p className="text-[#9CA3AF] text-sm mt-2">
-              Active taxis: <span className="text-[#F5C400] font-bold">{formatNumber(supply)}</span>
-            </p>
+            <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest">Live Demand</p>
+            <p className="text-5xl font-black text-slate-900 mt-2 tabular-nums">{formatNumber(demand)}</p>
+            <p className="text-slate-400 text-sm mt-1.5">trips per hour</p>
           </div>
           <div className="flex items-center gap-2 mt-3">
-            <div className="flex-1 bg-[#1F2937] rounded-full h-2.5">
+            <div className="flex-1 bg-slate-100 rounded-full h-2.5">
               <div
                 className="bg-[#0057FF] h-2.5 rounded-full transition-all duration-700"
                 style={{ width: `${covered}%` }}
               />
             </div>
-            <span className="text-xs text-[#9CA3AF] w-16 text-right">{covered}% covered</span>
+            <span className="text-xs text-slate-400 w-16 text-right">{covered}% met</span>
           </div>
         </div>
       }

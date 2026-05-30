@@ -25,16 +25,16 @@ export default function WeatherTileCmp() {
         <div className="flex-1 flex flex-col justify-between mt-1">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-[#9CA3AF] text-xs font-semibold uppercase tracking-widest">Weather</p>
-              <p className="text-white font-bold text-lg mt-2">{current?.condition ?? '—'}</p>
-              <p className="text-5xl font-black text-white mt-1">
-                {current?.high ?? '—'}°<span className="text-2xl text-[#9CA3AF]">C</span>
+              <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest">Weather</p>
+              <p className="text-slate-700 font-bold text-lg mt-2">{current?.condition ?? '—'}</p>
+              <p className="text-5xl font-black text-slate-900 mt-1">
+                {current?.high ?? '—'}°<span className="text-2xl text-slate-400">C</span>
               </p>
             </div>
-            <Icon size={44} className={`mt-2 ${isRain ? 'text-blue-400' : 'text-[#F5C400]'}`} />
+            <Icon size={44} className={`mt-2 ${isRain ? 'text-blue-500' : 'text-[#F5C400]'}`} />
           </div>
-          <p className="text-sm text-[#9CA3AF]">
-            Rain probability: <span className="text-white font-semibold">{current?.rainProb ?? 0}%</span>
+          <p className="text-sm text-slate-400">
+            Rain: <span className="text-slate-700 font-semibold">{current?.rainProb ?? 0}%</span>
           </p>
         </div>
       }
