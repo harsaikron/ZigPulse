@@ -4,6 +4,7 @@ import { OpportunitiesModule } from './modules/opportunities/opportunities.modul
 import { EventsModule } from './modules/events/events.module';
 import { WeatherModule } from './modules/weather/weather.module';
 import { TransportModule } from './modules/transport/transport.module';
+import { CommandCentreModule } from './modules/command-centre/command-centre.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { TransportModule } from './modules/transport/transport.module';
     EventsModule,
     WeatherModule,
     TransportModule,
+    CommandCentreModule,
   ],
 })
 export class AppModule {}
