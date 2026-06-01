@@ -9,6 +9,7 @@ import WeatherStrip from '@/components/command-centre/WeatherStrip'
 import TransportAlerts from '@/components/command-centre/TransportAlerts'
 import AIRecommendations from '@/components/command-centre/AIRecommendations'
 import { useCommandCentre } from '@/lib/hooks/useCommandCentre'
+import { AlertTriangle } from 'lucide-react'
 
 function SkeletonCard({ className = '' }: { className?: string }) {
   return (
@@ -20,13 +21,21 @@ function SkeletonCard({ className = '' }: { className?: string }) {
 }
 
 export default function CommandCentrePage() {
-  const { data, loading, isLive } = useCommandCentre()
+  const { data, loading, error, isLive } = useCommandCentre()
 
   return (
     <div className="flex min-h-screen" style={{ backgroundColor: 'var(--color-bg)' }}>
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar title="Command Centre" isLive={isLive} />
+
+        {error && (
+          <div className="mx-6 mt-4 flex items-center gap-3 px-4 py-3 rounded-xl border"
+            style={{ backgroundColor: 'rgba(255,82,82,0.08)', borderColor: 'rgba(255,82,82,0.3)', color: '#FF5252' }}>
+            <AlertTriangle size={16} />
+            <span className="text-sm font-medium">Backend unreachable — start the API on port 4000 to load live data.</span>
+          </div>
+        )}
 
         <main className="flex-1 p-6 space-y-6">
           {/* Zone A — Hero Row */}
