@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Check, Sun, Moon, Monitor, Wifi, WifiOff } from 'lucide-react'
+import { Check, Sun, Moon, Monitor, Wifi, WifiOff, Bot, Sparkles, Eye, EyeOff } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Sidebar from '@/components/layout/Sidebar'
 import TopBar from '@/components/layout/TopBar'
@@ -29,6 +29,78 @@ function SectionCard({ title, children, index }: { title: string; children: Reac
       </h3>
       {children}
     </motion.div>
+  )
+}
+
+function ApiKeyRow({
+  label,
+  icon: Icon,
+  storageKey,
+  placeholder,
+}: {
+  label: string
+  icon: React.ElementType
+  storageKey: string
+  placeholder: string
+}) {
+  const [value, setValue] = useState('')
+  const [show, setShow] = useState(false)
+  const [saved, setSaved] = useState(false)
+
+  useEffect(() => {
+    const stored = localStorage.getItem(storageKey)
+    if (stored) setValue(stored)
+  }, [storageKey])
+
+  const handleSave = () => {
+    localStorage.setItem(storageKey, value)
+    setSaved(true)
+    setTimeout(() => setSaved(false), 2000)
+  }
+
+  return (
+    <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 w-44 flex-shrink-0">
+        <Icon size={14} style={{ color: 'var(--color-text-3)' }} />
+        <span className="text-xs font-semibold" style={{ color: 'var(--color-text-2)' }}>{label}</span>
+      </div>
+      <div className="flex-1 flex items-center gap-2">
+        <div className="relative flex-1">
+          <input
+            type={show ? 'text' : 'password'}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder={placeholder}
+            className="w-full px-3 py-2 rounded-xl text-sm font-mono pr-10"
+            style={{
+              backgroundColor: 'var(--color-surface-2)',
+              color: 'var(--color-text-1)',
+              border: '1px solid var(--color-border)',
+              outline: 'none',
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => setShow(!show)}
+            className="absolute right-2.5 top-1/2 -translate-y-1/2"
+            style={{ color: 'var(--color-text-3)' }}
+          >
+            {show ? <EyeOff size={14} /> : <Eye size={14} />}
+          </button>
+        </div>
+        <button
+          onClick={handleSave}
+          className="px-3 py-2 rounded-xl text-xs font-semibold transition-colors flex-shrink-0"
+          style={
+            saved
+              ? { backgroundColor: 'var(--color-success)', color: '#fff' }
+              : { backgroundColor: 'var(--color-primary)', color: '#fff' }
+          }
+        >
+          {saved ? 'Saved ✓' : 'Save'}
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -180,8 +252,29 @@ export default function SettingsPage() {
               </div>
             </SectionCard>
 
+            {/* AI Integrations */}
+            <SectionCard title="AI Integrations" index={2}>
+              <div className="space-y-4">
+                <ApiKeyRow
+                  label="OpenAI API Key"
+                  icon={Bot}
+                  storageKey="OPENAI_API_KEY"
+                  placeholder="sk-..."
+                />
+                <ApiKeyRow
+                  label="Gemini API Key"
+                  icon={Sparkles}
+                  storageKey="GEMINI_API_KEY"
+                  placeholder="AIza..."
+                />
+              </div>
+              <p className="text-xs mt-4" style={{ color: 'var(--color-text-3)' }}>
+                API keys are stored locally in your browser and never sent to our servers.
+              </p>
+            </SectionCard>
+
             {/* Brand Profile */}
-            <SectionCard title="Brand Profile" index={2}>
+            <SectionCard title="Brand Profile" index={3}>
               <div className="grid grid-cols-2 gap-3 mb-3">
                 {[
                   { label: 'Organisation', value: 'ComfortDelGro Group' },
@@ -204,7 +297,7 @@ export default function SettingsPage() {
             </SectionCard>
 
             {/* About */}
-            <SectionCard title="About" index={3}>
+            <SectionCard title="About" index={4}>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-semibold" style={{ color: 'var(--color-text-1)' }}>ZigPulse AI</span>

@@ -1,12 +1,12 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Image from 'next/image'
 import {
   Zap, Sparkles, CalendarDays, CloudSun, Train,
   Megaphone, Paintbrush, Calendar, BarChart3, Settings,
-  ChevronLeft, ChevronRight
+  ChevronLeft, ChevronRight, LogOut
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -40,7 +40,13 @@ const NAV_GROUPS = [
 
 export default function Sidebar() {
   const pathname = usePathname()
+  const router = useRouter()
   const [collapsed, setCollapsed] = useState(false)
+
+  const handleLogout = () => {
+    localStorage.removeItem('zp_auth')
+    router.push('/login')
+  }
 
   return (
     <aside
@@ -158,6 +164,17 @@ export default function Sidebar() {
             </div>
           </div>
         )}
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 w-full px-3 py-2 rounded-xl transition-colors min-h-[40px] mb-1"
+          style={{ color: 'var(--color-text-3)' }}
+          aria-label="Sign out"
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--color-surface-2)' }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '' }}
+        >
+          <LogOut size={16} className="flex-shrink-0" />
+          {!collapsed && <span className="text-sm font-medium">Sign Out</span>}
+        </button>
         <button
           onClick={() => setCollapsed(!collapsed)}
           className="flex items-center justify-center w-full py-2 rounded-xl transition-colors min-h-[40px]"
