@@ -264,7 +264,7 @@ export default function CreativeStudioPage() {
                   className="grid grid-cols-1 xl:grid-cols-3 gap-4"
                 >
                   {variants.map((v, i) => (
-                    <VariantCard key={v.tone} variant={v} index={i} />
+                    <VariantCard key={i} variant={v} index={i} />
                   ))}
                 </motion.div>
               ) : (

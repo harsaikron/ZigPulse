@@ -6,6 +6,10 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 export async function POST(req: NextRequest) {
   const { brief, brand, platforms } = await req.json()
 
+  if (!brief || !brand) {
+    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
+
   const prompt = `Generate 3 ad copy variants for a ${brand} campaign.
 Brief: ${brief}
 Platforms: ${Array.isArray(platforms) ? platforms.join(', ') : platforms}
