@@ -118,13 +118,41 @@
 }
 
 @layer base {
+  :root {
+    --color-bg: #F8FAFC;
+    --color-surface: #FFFFFF;
+    --color-surface-2: #F1F5F9;
+    --color-border: #E2E8F0;
+    --color-text-1: #0F172A;
+    --color-text-2: #64748B;
+    --color-text-3: #94A3B8;
+    --color-primary: #0367FC;
+    --color-primary-dim: rgba(3, 103, 252, 0.10);
+    --color-success: #00C853;
+    --color-warning: #FFB300;
+    --color-danger: #FF5252;
+    --color-ai: #7C3AED;
+    --color-ai-dim: rgba(124, 58, 237, 0.10);
+  }
+
+  .dark {
+    --color-bg: #060C18;
+    --color-surface: #0D1526;
+    --color-surface-2: #152033;
+    --color-border: #1E2D42;
+    --color-text-1: #F0F6FF;
+    --color-text-2: #8BA3C4;
+    --color-text-3: #4A6580;
+  }
+
   * {
     @apply border-border outline-ring/50;
     box-sizing: border-box;
   }
   body {
-    background: #F1F5F9;
-    color: #0F172A;
+    background-color: var(--color-bg);
+    color: var(--color-text-1);
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     min-height: 100vh;
   }
