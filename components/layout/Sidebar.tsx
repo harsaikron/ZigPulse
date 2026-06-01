@@ -148,9 +148,9 @@ export default function Sidebar() {
           >
             <div
               className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ background: '#F5C400' }}
+              style={{ background: 'var(--color-primary)' }}
             >
-              <span className="text-xs font-black" style={{ color: 'var(--color-primary)' }}>CDG</span>
+              <span className="text-xs font-black" style={{ color: '#ffffff' }}>CDG</span>
             </div>
             <div className="min-w-0">
               <p className="text-xs font-semibold truncate" style={{ color: 'var(--color-text-1)' }}>Marketing Team</p>

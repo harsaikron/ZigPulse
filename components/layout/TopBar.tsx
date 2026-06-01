@@ -100,7 +100,7 @@ export default function TopBar({ title, isLive = false }: TopBarProps) {
       {/* Avatar */}
       <div
         className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
-        style={{ backgroundColor: '#F5C400', color: 'var(--color-primary)' }}
+        style={{ backgroundColor: 'var(--color-primary)', color: '#ffffff' }}
       >
         CDG
       </div>
