@@ -61,7 +61,7 @@ export default function Sidebar() {
       >
         <div className="flex-shrink-0">
           <Image
-            src="/brand/zig-icon.png"
+            src="/brand/logo.png"
             alt="Zig icon"
             width={36}
             height={36}

@@ -37,7 +37,7 @@ export default function TopBar({ title, isLive = false }: TopBarProps) {
       {/* Wordmark */}
       <div className="flex-shrink-0">
         <Image
-          src="/brand/zig-wordmark.png"
+          src="/brand/time_to_zig.png"
           alt="ZigPulse"
           width={120}
           height={28}
