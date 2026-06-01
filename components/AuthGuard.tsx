@@ -1,16 +1,16 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter()
-  const [checked, setChecked] = useState(false)
+  const pathname = usePathname()
   const [authed, setAuthed] = useState(false)
 
   useEffect(() => {
-    if (window.location.pathname === '/login') {
+    // Login page needs no auth check
+    if (pathname === '/login') {
       setAuthed(true)
-      setChecked(true)
       return
     }
     const ok = localStorage.getItem('zp_auth') === 'true'
@@ -19,10 +19,11 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     } else {
       setAuthed(true)
     }
-    setChecked(true)
-  }, [router])
+  }, [pathname, router])
 
-  if (!checked) return null
+  // Show login page immediately without waiting for effect
+  if (pathname === '/login') return <>{children}</>
+
   if (!authed) return null
   return <>{children}</>
 }
