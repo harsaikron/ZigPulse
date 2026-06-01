@@ -14,7 +14,7 @@ const NAV = [
   { href: '/demand', label: 'Supply & Demand', icon: TrendingUp },
   { href: '/events', label: 'Upcoming Events', icon: Calendar },
   { href: '/heatmap', label: 'Area Heatmap', icon: Map },
-  { href: '/weather', label: 'Weather & El Niño', icon: CloudSun },
+  { href: '/weather', label: 'Weather', icon: CloudSun },
   { href: '/profit', label: 'Profit Estimator', icon: DollarSign },
   { href: '/marketing', label: 'Marketing Studio', icon: Megaphone },
 ]
