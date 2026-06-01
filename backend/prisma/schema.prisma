@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OpportunityType {
+  WEATHER
+  EVENT
+  TRANSPORT
+  HOLIDAY
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model Opportunity {
+  id                String          @id @default(cuid())
+  type              OpportunityType
+  title             String
+  severity          Severity
+  score             Int
+  confidence        Int
+  reasons           String[]
+  suggestedCampaign String
+  potentialReach    Int
+  location          String?
+  startDate         DateTime?
+  expiresAt         DateTime
+  createdAt         DateTime        @default(now())
+  dismissed         Boolean         @default(false)
+}
+
+model Event {
+  id               String   @id @default(cuid())
+  name             String
+  venue            String
+  zone             String
+  category         String
+  startDate        DateTime
+  attendanceEst    Int
+  opportunityScore Int
+  source           String
+  createdAt        DateTime @default(now())
+}
+
+model WeatherSnapshot {
+  id               String   @id @default(cuid())
+  date             DateTime
+  condition        String
+  high             Int
+  low              Int
+  rainProb         Int
+  elNinoConfidence Int
+  demandUplift     Int
+  createdAt        DateTime @default(now())
+}
+
+model TransportAlert {
+  id           String    @id @default(cuid())
+  type         String
+  severity     Severity
+  affectedLine String?
+  affectedRoad String?
+  description  String
+  demandUplift Int
+  startTime    DateTime
+  endTime      DateTime?
+  source       String
+  createdAt    DateTime  @default(now())
+}
+
+model AIRecommendation {
+  id             String   @id @default(cuid())
+  title          String
+  reason         String
+  campaignType   String
+  opportunityId  String?
+  createdAt      DateTime @default(now())
+}
